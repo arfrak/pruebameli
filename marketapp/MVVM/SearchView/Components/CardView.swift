@@ -29,7 +29,7 @@ struct CardView: View {
                     .font(Font.custom("Roboto-Medium", size: 20))
                     .foregroundColor(Color("TextBackground"))
                 HStack(alignment: .center) {
-                    Text(product.shipping ? "Envío gratis" : "Envío con costo")
+                    Text(product.shipping ? "freedeshipping" : "normalshipping")
                         .font(Font.custom("Roboto-Regular", size: 10))
                         .foregroundColor(Color("TextOptionBackground"))
                     if(product.shipping) {

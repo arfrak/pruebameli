@@ -19,7 +19,7 @@ struct HomeView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color("Background"))
             }
-            .navigationTitle("hello")
+            .navigationTitle("marketapp")
             .toolbar {
                 HStack {
                     Button {
@@ -42,24 +42,6 @@ struct HomeView: View {
             .background(Color.white)
             .navigationBar(backgroundColor: Color("Background"), titleColor: Color("TextBackground"))
         }.navigationViewStyle(.stack)
-    }
-}
-
-extension View {
-    @available(iOS 14, *)
-    func navigationBar(backgroundColor: Color, titleColor: Color) -> some View {
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        appearance.backgroundColor = UIColor(backgroundColor)
-
-        let uiTitleColor = UIColor(titleColor)
-        appearance.largeTitleTextAttributes = [.foregroundColor: uiTitleColor]
-        appearance.titleTextAttributes = [.foregroundColor: uiTitleColor]
-
-        UINavigationBar.appearance().standardAppearance = appearance
-        UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        
-        return self
     }
 }
 

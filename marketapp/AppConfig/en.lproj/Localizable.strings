@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  marketapp
+
+  Created by Andres Lopez on 22/05/22.
+  
+*/
+
+marketapp = "MarketApp";
+search = "Search";
+searchindicator = "Search...";
+freedeshipping = "Free shipping";
+normalshipping = "Shipping with cost";
+waytopay = "Up to 36 payments";
+cardmessage = "With any card";
+stockavailable = "Available stock";
+quantity = "Quantity:";
+numberone = "1";
+"availablemessage %lld" = "(Available %lld)";
+productstatus = "Product status";
+acceptmercadopago = "Accept mercadopago";
+sellerinformation = "Seller information";
+successfulsales = "Percentage of successful sales";
+product = "Product";
+new = "New";
+secondhand = "Second hand";
+yesresponse = "Yes";
+noresponse = "No";

@@ -32,7 +32,7 @@ struct SearchView: View {
                         .disableAutocorrection(true)
                         .foregroundColor(Color.black)
                         .placeholder(when: text.isEmpty) {
-                                Text("Buscar...").foregroundColor(.gray)
+                                Text("searchindicator").foregroundColor(.gray)
                         }
                         .introspectTextField(customize: {
                             $0.becomeFirstResponder()
@@ -61,7 +61,7 @@ struct SearchView: View {
                     ProductListView(productList: viewModel.productsList)
                 }
             }
-            .navigationTitle("Search")
+            .navigationTitle("search")
             .toolbar {
                 VStack {
                     Button {

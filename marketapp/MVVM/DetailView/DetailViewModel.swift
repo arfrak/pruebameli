@@ -34,17 +34,17 @@ class  DetailViewModel: ObservableObject {
     
     func getProductCondition(condition: String) {
         if(condition == "new") {
-            productCondition = "Nuevo"
+            productCondition = NSLocalizedString("new", comment: "")
         } else {
-            productCondition = "De segunda"
+            productCondition = NSLocalizedString("secondhand", comment: "")
         }
     }
     
     func getMercadoPagoCondition(condition: Bool) {
         if(condition) {
-            mercadopagoCondition = "Si"
+            mercadopagoCondition = NSLocalizedString("yesresponse", comment: "")
         } else {
-            mercadopagoCondition = "No"
+            mercadopagoCondition = NSLocalizedString("noresponse", comment: "")
         }
     }
     

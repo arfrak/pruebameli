@@ -74,13 +74,13 @@ struct DetailView: View {
                                 }
                                 .padding([.leading, .trailing], 20)
                                 
-                                Text("Hasta 36 cuotas")
+                                Text("waytopay")
                                     .font(Font.custom("Roboto-Regular", size: 12))
                                     .foregroundColor(Color("TextBackground"))
                                     .padding(.top, 15)
                                     .padding([.leading, .trailing], 20)
                                 
-                                Text("Con cualquier tarjeta")
+                                Text("cardmessage")
                                     .font(Font.custom("Roboto-Regular", size: 12))
                                     .foregroundColor(Color("ShadowEffect"))
                                     .padding(.bottom, 15)
@@ -89,7 +89,7 @@ struct DetailView: View {
                             }
                             .padding([.top, .bottom], 15)
                             
-                            Text("Stock disponible")
+                            Text("stockavailable")
                                 .font(Font.custom("Roboto-Medium", size: 14))
                                 .foregroundColor(Color("TextBackground"))
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -98,15 +98,15 @@ struct DetailView: View {
                                 .multilineTextAlignment(.leading)
                             
                             HStack(spacing: 0) {
-                                Text("Cantidad:")
+                                Text("quantity")
                                     .font(Font.custom("Roboto-Regular", size: 14))
                                     .foregroundColor(Color("TextBackground"))
                                     .padding(.leading, 20)
-                                Text("1")
+                                Text("numberone")
                                     .font(Font.custom("Roboto-Medium", size: 14))
                                     .foregroundColor(Color("TextBackground"))
                                     .padding(.leading, 10)
-                                Text("(Disponibles \(productInfo.available_quantity))")
+                                Text("availablemessage \(productInfo.available_quantity)")
                                     .font(Font.custom("Roboto-Regular", size: 14))
                                     .foregroundColor(Color("ShadowEffect"))
                                     .padding(.leading, 10)
@@ -119,7 +119,7 @@ struct DetailView: View {
                             .padding([.leading, .trailing], 20)
                             .padding([.top, .bottom], 5)
                             
-                            Text("Estado del producto")
+                            Text("productstatus")
                                 .font(Font.custom("Roboto-Medium", size: 14))
                                 .foregroundColor(Color("TextBackground"))
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -141,7 +141,7 @@ struct DetailView: View {
                             .padding([.leading, .trailing], 20)
                             .padding([.top, .bottom], 5)
                             
-                            Text("Acepta mercadopago")
+                            Text("acceptmercadopago")
                                 .font(Font.custom("Roboto-Medium", size: 14))
                                 .foregroundColor(Color("TextBackground"))
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -171,7 +171,7 @@ struct DetailView: View {
                                 .background(Color("BackgroundInfo"))
                                 .padding([.top, .bottom], 20)
                                 
-                                Text("Información del vendedor")
+                                Text("sellerinformation")
                                     .font(Font.custom("Roboto-Medium", size: 14))
                                     .foregroundColor(Color("TextBackground"))
                                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -194,7 +194,7 @@ struct DetailView: View {
                                 .padding([.leading, .trailing], 20)
                                 .padding([.top, .bottom], 5)
     
-                                Text("Porcentage de ventas realizadas con exito")
+                                Text("successfulsales")
                                     .font(Font.custom("Roboto-Regular", size: 14))
                                     .foregroundColor(Color("TextBackground"))
                             }
@@ -217,7 +217,7 @@ struct DetailView: View {
                 .background(Color("Background"))
             }
         }
-        .navigationTitle("Producto")
+        .navigationTitle("product")
         .toolbar {
             VStack {
                 Button {

@@ -93,3 +93,21 @@ struct RoundedCornersShape: Shape {
         return Path(path.cgPath)
     }
 }
+
+extension View {
+    @available(iOS 14, *)
+    func navigationBar(backgroundColor: Color, titleColor: Color) -> some View {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundColor = UIColor(backgroundColor)
+
+        let uiTitleColor = UIColor(titleColor)
+        appearance.largeTitleTextAttributes = [.foregroundColor: uiTitleColor]
+        appearance.titleTextAttributes = [.foregroundColor: uiTitleColor]
+
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        
+        return self
+    }
+}
