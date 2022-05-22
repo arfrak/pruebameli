@@ -23,4 +23,16 @@ struct ProductModel: Codable {
     var user_calification: Int = Int.random(in: 81..<101)
 }
 
-var productList = [ProductModel(id: "1234567", price: 15000, title: "Macbook Pro AV56 con Procesasdor M1", shipping: true)]
+var productList = [ProductModel(
+    id: "1234567",
+    price: 15000,
+    title: "Macbook Pro AV56 con Procesasdor M1",
+    shipping: true,
+    accepts_mercadopago: true,
+    available_quantity: 0,
+    condition: "new",
+    power_seller_status: "",
+    level_id: "",
+    ratings: Rating(negative: 0.0, neutral: 0.0, positive: 0.0),
+    user_ratings: 90,
+    user_calification: 90)]

@@ -19,7 +19,7 @@ struct HomeView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color("Background"))
             }
-            .navigationTitle("Home")
+            .navigationTitle("hello")
             .toolbar {
                 HStack {
                     Button {

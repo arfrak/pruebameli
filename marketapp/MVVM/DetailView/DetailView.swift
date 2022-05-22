@@ -21,7 +21,7 @@ struct DetailView: View {
                     VStack(spacing: 0) {
                         HStack {
                             VStack(alignment: .leading) {
-                                Text(productInfo.title)
+                                Text(viewModel.formatTitle)
                                     .multilineTextAlignment(.leading)
                                     .font(Font.custom("Roboto-Medium", size: 20))
                                     .foregroundColor(Color("TextBackground"))
@@ -29,8 +29,7 @@ struct DetailView: View {
                             .padding()
                             
                             VStack(alignment: .center) {
-                                //KFImage(URL(string: productInfo.image)!)
-                                Image("macbookpro")
+                                KFImage(URL(string: productInfo.image)!)
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 90)
@@ -243,6 +242,7 @@ struct DetailView: View {
             viewModel.getProductCondition(condition: productInfo.condition)
             viewModel.getMercadoPagoCondition(condition: productInfo.accepts_mercadopago)
             viewModel.getColorStatus(value: productInfo.ratings.positive)
+            viewModel.getFormatTitle(title: productInfo.title)
         }
     }
 }

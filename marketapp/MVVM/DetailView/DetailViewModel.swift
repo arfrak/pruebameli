@@ -14,6 +14,7 @@ class  DetailViewModel: ObservableObject {
     @Published var mercadopagoCondition: String = ""
     @Published var colorStatus: Color = Color.red
     @Published var valueStatus: Int = 0
+    @Published var formatTitle: String = ""
     
     func getcalificationValue(value: Int) {
         arrayStarComponent.removeAll()
@@ -54,5 +55,9 @@ class  DetailViewModel: ObservableObject {
         } else if(calculateValue >= 81) {
             colorStatus = Color.green
         }
+    }
+    
+    func getFormatTitle(title: String) {
+        formatTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }

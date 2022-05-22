@@ -27,6 +27,7 @@ struct SearchView: View {
                             .padding(.leading, 5)
                         TextField("", text: $text, onCommit: {
                             viewModel.getProductsBySearch(parameters: text)
+                            viewModel.isLoading = true
                         })
                         .disableAutocorrection(true)
                         .foregroundColor(Color.black)
@@ -53,16 +54,12 @@ struct SearchView: View {
                 .frame(height: 50)
                 .frame(maxWidth: .infinity)
                 .background(Color("Background"))
-                ScrollView {
-                    ForEach(viewModel.productsList, id: \.id) { product in
-                        NavigationLink(destination: DetailView(productInfo: product)) {
-                            CardView(product: product)
-                        }
-                    }
+                
+                if viewModel.isLoading {
+                    LoadingView()
+                } else {
+                    ProductListView(productList: viewModel.productsList)
                 }
-                VStack {}
-                .frame(maxWidth: .infinity)
-                .background(Color("Background"))
             }
             .navigationTitle("Search")
             .toolbar {

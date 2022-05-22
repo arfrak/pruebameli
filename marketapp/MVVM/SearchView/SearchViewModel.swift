@@ -8,12 +8,14 @@
 import Foundation
 import Combine
 import SwiftyJSON
+import UIKit
 
 class SearchViewModel: ObservableObject {
     private let baseUrl = "https://api.mercadolibre.com/sites/MLA/search"
     private var task: AnyCancellable?
     
     @Published var productsList: [ProductModel] = []
+    @Published var isLoading: Bool = false
     
     func getProductsBySearch(parameters: String) {
         var finalURL = URLComponents(string: baseUrl)
@@ -52,8 +54,9 @@ class SearchViewModel: ObservableObject {
                     list.append(product)
                 }
                 
-                DispatchQueue.main.async {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.productsList = list
+                    self.isLoading = false
                 }
             }
         }
