@@ -20,6 +20,7 @@ struct ProductModel: Codable {
     var level_id: String = ""
     var ratings: Rating = Rating()
     var user_ratings: Int = Int.random(in: 1..<999)
+    var user_calification: Int = Int.random(in: 81..<101)
 }
 
 var productList = [ProductModel(id: "1234567", price: 15000, title: "Macbook Pro AV56 con Procesasdor M1", shipping: true)]

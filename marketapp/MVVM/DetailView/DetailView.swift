@@ -12,6 +12,8 @@ struct DetailView: View {
     var productInfo: ProductModel
     @Environment(\.presentationMode) var presentation
     
+    @ObservedObject var viewModel = DetailViewModel()
+    
     var body: some View {
         VStack {
             GeometryReader() { proxy in
@@ -44,21 +46,9 @@ struct DetailView: View {
                         
                         VStack(alignment: .center) {
                             HStack(alignment: .center) {
-                                Image("graystaricon")
-                                    .resizable()
-                                    .scaledToFit()
-                                Image("graystaricon")
-                                    .resizable()
-                                    .scaledToFit()
-                                Image("graystaricon")
-                                    .resizable()
-                                    .scaledToFit()
-                                Image("graystaricon")
-                                    .resizable()
-                                    .scaledToFit()
-                                Image("graystaricon")
-                                    .resizable()
-                                    .scaledToFit()
+                                ForEach(0..<(viewModel.arrayStarComponent.count), id: \.self) { index in
+                                    viewModel.arrayStarComponent[index]
+                                }
                                 Text("(\(productInfo.user_ratings))")
                                     .font(Font.custom("Roboto-Regular", size: 12))
                                     .foregroundColor(Color("ShadowEffect"))
@@ -117,7 +107,7 @@ struct DetailView: View {
                                     .font(Font.custom("Roboto-Medium", size: 14))
                                     .foregroundColor(Color("TextBackground"))
                                     .padding(.leading, 10)
-                                Text("(6 disponibles)")
+                                Text("(Disponibles \(productInfo.available_quantity))")
                                     .font(Font.custom("Roboto-Regular", size: 14))
                                     .foregroundColor(Color("ShadowEffect"))
                                     .padding(.leading, 10)
@@ -139,7 +129,7 @@ struct DetailView: View {
                                 .multilineTextAlignment(.leading)
                             
                             HStack(spacing: 0) {
-                                Text("Nuevo")
+                                Text(viewModel.productCondition)
                                     .font(Font.custom("Roboto-Regular", size: 14))
                                     .foregroundColor(Color("TextBackground"))
                                     .padding(.leading, 20)
@@ -161,7 +151,7 @@ struct DetailView: View {
                                 .multilineTextAlignment(.leading)
                             
                             HStack(spacing: 0) {
-                                Text("Si")
+                                Text(viewModel.mercadopagoCondition)
                                     .font(Font.custom("Roboto-Regular", size: 14))
                                     .foregroundColor(Color("TextBackground"))
                                     .padding(.leading, 20)
@@ -174,30 +164,54 @@ struct DetailView: View {
                             .padding([.leading, .trailing], 20)
                             .padding([.top, .bottom], 5)
                             
-                            VStack() {
-                            }
-                            .frame(height: 1)
-                            .frame(maxWidth: .infinity)
-                            .background(Color("BackgroundInfo"))
-                            .padding([.top, .bottom], 20)
-                            
-                            
-                            Text("Información del vendedor")
-                                .font(Font.custom("Roboto-Medium", size: 14))
-                                .foregroundColor(Color("TextBackground"))
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                            VStack(spacing: 0) {
+                                VStack() {
+                                }
+                                .frame(height: 1)
+                                .frame(maxWidth: .infinity)
+                                .background(Color("BackgroundInfo"))
+                                .padding([.top, .bottom], 20)
+                                
+                                Text("Información del vendedor")
+                                    .font(Font.custom("Roboto-Medium", size: 14))
+                                    .foregroundColor(Color("TextBackground"))
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding([.leading, .trailing], 20)
+                                    .padding([.top, .bottom], 5)
+                                    .multilineTextAlignment(.leading)
+                                
+                                HStack {
+                                    VStack {
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                    .frame(height: 10)
+                                    .background(viewModel.colorStatus)
+                                    .cornerRadius(/*@START_MENU_TOKEN@*/5.0/*@END_MENU_TOKEN@*/)
+    
+                                    Text("\(Int(productInfo.ratings.positive * 100))")
+                                        .font(Font.custom("Roboto-Regular", size: 14))
+                                        .foregroundColor(Color("TextBackground"))
+                                }
                                 .padding([.leading, .trailing], 20)
                                 .padding([.top, .bottom], 5)
-                                .multilineTextAlignment(.leading)
-                            
-                            HStack() {
-                                
+    
+                                Text("Porcentage de ventas realizadas con exito")
+                                    .font(Font.custom("Roboto-Regular", size: 14))
+                                    .foregroundColor(Color("TextBackground"))
                             }
-                            .padding([.leading, .trailing], 20)
-                            .padding([.top, .bottom], 5)
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(.white)
+                        
+                        VStack {
+                            
+                        }
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 80)
+                        .background(
+                            RoundedCornersShape(corners: [.bottomLeft, .bottomRight], radius: 50)
+                                .fill(Color.white)
+                        )
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -224,6 +238,12 @@ struct DetailView: View {
         .frame(maxWidth: .infinity)
         .background(Color.white)
         .navigationBar(backgroundColor: Color("Background"), titleColor: Color("TextBackground"))
+        .onAppear {
+            viewModel.getcalificationValue(value: productInfo.user_calification)
+            viewModel.getProductCondition(condition: productInfo.condition)
+            viewModel.getMercadoPagoCondition(condition: productInfo.accepts_mercadopago)
+            viewModel.getColorStatus(value: productInfo.ratings.positive)
+        }
     }
 }
 
