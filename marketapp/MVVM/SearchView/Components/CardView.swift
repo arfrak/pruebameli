@@ -22,7 +22,6 @@ struct CardView: View {
                 .padding()
             VStack(alignment: .leading) {
                 Text(viewModel.formatTitle)
-                
                     .multilineTextAlignment(.leading)
                     .font(Font.custom("Roboto-Regular", size: 15))
                     .foregroundColor(Color("TextBackground"))

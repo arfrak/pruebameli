@@ -14,36 +14,56 @@ struct DetailView: View {
     
     var body: some View {
         VStack {
-            ScrollView {
-                GeometryReader() { proxy in
+            GeometryReader() { proxy in
+                ScrollView {
                     VStack(spacing: 0) {
-                        VStack(alignment: .leading, spacing: 0) {
-                            HStack(spacing: 0) {
+                        HStack {
+                            VStack(alignment: .leading) {
                                 Text(productInfo.title)
-                                    .font(Font.custom("Roboto-Medium", size: 22))
+                                    .multilineTextAlignment(.leading)
+                                    .font(Font.custom("Roboto-Medium", size: 20))
                                     .foregroundColor(Color("TextBackground"))
-                                    .frame(width: (proxy.size.width / 10) * 6)
-                                VStack(alignment: .center) {
-                                    KFImage(URL(string: productInfo.image)!)
-                                    //Image("macbookpro")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 90)
-                                        .padding()
-                                }
-                                .frame(width: (proxy.size.width / 10) * 4, height: 200)
                             }
-                            .frame(height: 35)
-                            .frame(maxWidth: .infinity)
-                            .background(.clear)
+                            .padding()
+                            
+                            VStack(alignment: .center) {
+                                //KFImage(URL(string: productInfo.image)!)
+                                Image("macbookpro")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 90)
+                                    .padding()
+                                    .background(.white)
+                                    .cornerRadius(10)
+                            }
+                            .frame(width: (proxy.size.width / 10) * 4, height: 200)
                         }
-                        .padding(0)
-                        .frame(maxWidth: .infinity)
                         .frame(height: 200)
+                        .frame(maxWidth: .infinity)
                         .background(.clear)
                         
-                        VStack {
-                            
+                        VStack(alignment: .center) {
+                            HStack(alignment: .center) {
+                                Image("graystaricon")
+                                    .resizable()
+                                    .scaledToFit()
+                                Image("graystaricon")
+                                    .resizable()
+                                    .scaledToFit()
+                                Image("graystaricon")
+                                    .resizable()
+                                    .scaledToFit()
+                                Image("graystaricon")
+                                    .resizable()
+                                    .scaledToFit()
+                                Image("graystaricon")
+                                    .resizable()
+                                    .scaledToFit()
+                                Text("(\(productInfo.user_ratings))")
+                                    .font(Font.custom("Roboto-Regular", size: 12))
+                                    .foregroundColor(Color("ShadowEffect"))
+                            }
+                            .frame(width: 190, height: 20)
                         }
                         .frame(maxWidth: .infinity)
                         .frame(height: 80)
@@ -51,20 +71,138 @@ struct DetailView: View {
                             RoundedCornersShape(corners: [.topLeft, .topRight], radius: 50)
                                 .fill(Color.white)
                         )
-                        .shadow(color: Color("ShadowEffect"), radius: 8)
                         
                         VStack {
-                            Text("HOLA")
-                            Spacer()
+                            VStack(alignment: .leading, spacing: 0) {
+                                HStack {
+                                    Text("$")
+                                        .font(Font.custom("Roboto-Regular", size: 30))
+                                        .foregroundColor(Color("TextBackground"))
+                                    Text("\(productInfo.price)")
+                                        .font(Font.custom("Roboto-Regular", size: 30))
+                                        .foregroundColor(Color("TextBackground"))
+                                    Spacer()
+                                }
+                                .padding([.leading, .trailing], 20)
+                                
+                                Text("Hasta 36 cuotas")
+                                    .font(Font.custom("Roboto-Regular", size: 12))
+                                    .foregroundColor(Color("TextBackground"))
+                                    .padding(.top, 15)
+                                    .padding([.leading, .trailing], 20)
+                                
+                                Text("Con cualquier tarjeta")
+                                    .font(Font.custom("Roboto-Regular", size: 12))
+                                    .foregroundColor(Color("ShadowEffect"))
+                                    .padding(.bottom, 15)
+                                    .padding(.top, 2)
+                                    .padding([.leading, .trailing], 20)
+                            }
+                            .padding([.top, .bottom], 15)
+                            
+                            Text("Stock disponible")
+                                .font(Font.custom("Roboto-Medium", size: 14))
+                                .foregroundColor(Color("TextBackground"))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding([.leading, .trailing], 20)
+                                .padding([.top, .bottom], 5)
+                                .multilineTextAlignment(.leading)
+                            
+                            HStack(spacing: 0) {
+                                Text("Cantidad:")
+                                    .font(Font.custom("Roboto-Regular", size: 14))
+                                    .foregroundColor(Color("TextBackground"))
+                                    .padding(.leading, 20)
+                                Text("1")
+                                    .font(Font.custom("Roboto-Medium", size: 14))
+                                    .foregroundColor(Color("TextBackground"))
+                                    .padding(.leading, 10)
+                                Text("(6 disponibles)")
+                                    .font(Font.custom("Roboto-Regular", size: 14))
+                                    .foregroundColor(Color("ShadowEffect"))
+                                    .padding(.leading, 10)
+                                Spacer()
+                            }
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 45)
+                            .background(Color("BackgroundInfo"))
+                            .cornerRadius(/*@START_MENU_TOKEN@*/10.0/*@END_MENU_TOKEN@*/)
+                            .padding([.leading, .trailing], 20)
+                            .padding([.top, .bottom], 5)
+                            
+                            Text("Estado del producto")
+                                .font(Font.custom("Roboto-Medium", size: 14))
+                                .foregroundColor(Color("TextBackground"))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding([.leading, .trailing], 20)
+                                .padding([.top, .bottom], 5)
+                                .multilineTextAlignment(.leading)
+                            
+                            HStack(spacing: 0) {
+                                Text("Nuevo")
+                                    .font(Font.custom("Roboto-Regular", size: 14))
+                                    .foregroundColor(Color("TextBackground"))
+                                    .padding(.leading, 20)
+                                Spacer()
+                            }
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 45)
+                            .background(Color("BackgroundInfo"))
+                            .cornerRadius(/*@START_MENU_TOKEN@*/10.0/*@END_MENU_TOKEN@*/)
+                            .padding([.leading, .trailing], 20)
+                            .padding([.top, .bottom], 5)
+                            
+                            Text("Acepta mercadopago")
+                                .font(Font.custom("Roboto-Medium", size: 14))
+                                .foregroundColor(Color("TextBackground"))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding([.leading, .trailing], 20)
+                                .padding([.top, .bottom], 5)
+                                .multilineTextAlignment(.leading)
+                            
+                            HStack(spacing: 0) {
+                                Text("Si")
+                                    .font(Font.custom("Roboto-Regular", size: 14))
+                                    .foregroundColor(Color("TextBackground"))
+                                    .padding(.leading, 20)
+                                Spacer()
+                            }
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 45)
+                            .background(Color("BackgroundInfo"))
+                            .cornerRadius(/*@START_MENU_TOKEN@*/10.0/*@END_MENU_TOKEN@*/)
+                            .padding([.leading, .trailing], 20)
+                            .padding([.top, .bottom], 5)
+                            
+                            VStack() {
+                            }
+                            .frame(height: 1)
+                            .frame(maxWidth: .infinity)
+                            .background(Color("BackgroundInfo"))
+                            .padding([.top, .bottom], 20)
+                            
+                            
+                            Text("Información del vendedor")
+                                .font(Font.custom("Roboto-Medium", size: 14))
+                                .foregroundColor(Color("TextBackground"))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding([.leading, .trailing], 20)
+                                .padding([.top, .bottom], 5)
+                                .multilineTextAlignment(.leading)
+                            
+                            HStack() {
+                                
+                            }
+                            .padding([.leading, .trailing], 20)
+                            .padding([.top, .bottom], 5)
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .frame(height: 400)
                         .background(.white)
                     }
                 }
+                .frame(maxWidth: .infinity)
+                .background(Color("Background"))
             }
-            .frame(maxWidth: .infinity)
-            .background(Color("Background"))
         }
         .navigationTitle("Producto")
         .toolbar {

@@ -19,6 +19,7 @@ struct ProductModel: Codable {
     var power_seller_status: String = ""
     var level_id: String = ""
     var ratings: Rating = Rating()
+    var user_ratings: Int = Int.random(in: 1..<999)
 }
 
-var productList = [ProductModel(id: "PS5 Versión 1.", price: 15000, title: "Macbook Pro AV56", shipping: true)]
+var productList = [ProductModel(id: "1234567", price: 15000, title: "Macbook Pro AV56 con Procesasdor M1", shipping: true)]
