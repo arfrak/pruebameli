@@ -26,3 +26,7 @@ new = "New";
 secondhand = "Second hand";
 yesresponse = "Yes";
 noresponse = "No";
+
+nointernet = "Connect to the internet\nCheck the connection.";
+errorresponse = "We're having trouble responding\nPlease try again later.";
+noresults = "The search did not return\nany results.";

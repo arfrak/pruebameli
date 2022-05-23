@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-import SwiftyJSON
+import SwiftyJSON 
 import UIKit
 
 class SearchViewModel: ObservableObject {
@@ -16,21 +16,31 @@ class SearchViewModel: ObservableObject {
     
     @Published var productsList: [ProductModel] = []
     @Published var isLoading: Bool = false
+    @Published var errorResponse: Bool = false
+    @Published var notResult: Bool = false
     
     func getProductsBySearch(parameters: String) {
         var finalURL = URLComponents(string: baseUrl)
         finalURL?.queryItems = [URLQueryItem(name: "q", value: parameters)]
-        let task = URLSession.shared.dataTask(with: (finalURL?.url!)!) { [self] data, response, error in
-            if let error = error {
-                fatalError("Error: \(error.localizedDescription)")
-            }
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                fatalError("Error: invalid HTTP response code")
-            }
-            guard let data = data else {
-                fatalError("Error: missing response data")
-            }
+        let task = URLSession.shared.dataTask(with: (finalURL?.url!)!) { data, response, error in
 
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.errorResponse = true
+                }
+                return
+            }
+            
+            guard let data = data, error == nil else {
+                // check for fundamental networking error
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    self.errorResponse = true
+                }
+                return
+            }
+            
             do {
                 let results = JSON(data)["results"]
                 
@@ -57,6 +67,10 @@ class SearchViewModel: ObservableObject {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     self.productsList = list
                     self.isLoading = false
+                    
+                    if(list.isEmpty) {
+                        self.notResult = true
+                    }
                 }
             }
         }

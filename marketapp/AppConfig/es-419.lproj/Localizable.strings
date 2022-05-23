@@ -26,3 +26,8 @@ new = "Nuevo";
 secondhand = "De segunda";
 yesresponse = "Si";
 noresponse = "No";
+
+nointernet = "Conéctate a internet\nComprueba la conexión.";
+errorresponse = "Tenemos problemas para responder\nIntentalo más tarde.";
+noresults = "La búsqueda no arrojo\nningún resultado.";
+

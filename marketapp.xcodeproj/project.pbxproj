@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18359E5B283AEAC600E514C5 /* ResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18359E5A283AEAC600E514C5 /* ResponseView.swift */; };
+		18359E5D283B03DE00E514C5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18359E5C283B03DE00E514C5 /* NetworkManager.swift */; };
 		186AF062283830C100A9072D /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 186AF061283830C100A9072D /* Introspect */; };
 		186AF06428385C0A00A9072D /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186AF06328385C0A00A9072D /* CardViewModel.swift */; };
 		186AF067283862F800A9072D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 186AF066283862F800A9072D /* Kingfisher */; };
@@ -52,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18359E5A283AEAC600E514C5 /* ResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseView.swift; sourceTree = "<group>"; };
+		18359E5C283B03DE00E514C5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		186AF06328385C0A00A9072D /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		186AF0682838692A00A9072D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1872477828393528009EF88B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -255,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				18CBFA342836C254002AA14C /* Modifiers.swift */,
+				18359E5C283B03DE00E514C5 /* NetworkManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -266,6 +271,7 @@
 				186AF06328385C0A00A9072D /* CardViewModel.swift */,
 				18724784283A9998009EF88B /* LoadingView.swift */,
 				18724786283A9BE4009EF88B /* ProductListView.swift */,
+				18359E5A283AEAC600E514C5 /* ResponseView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -418,7 +424,9 @@
 				18869C94283680790098EF6C /* marketappApp.swift in Sources */,
 				18724787283A9BE4009EF88B /* ProductListView.swift in Sources */,
 				18869CC9283681320098EF6C /* DetailView.swift in Sources */,
+				18359E5D283B03DE00E514C5 /* NetworkManager.swift in Sources */,
 				18869CC62836811D0098EF6C /* SearchView.swift in Sources */,
+				18359E5B283AEAC600E514C5 /* ResponseView.swift in Sources */,
 				18869CC42836810E0098EF6C /* HomeView.swift in Sources */,
 				18CBFA3C2836C894002AA14C /* ProductModel.swift in Sources */,
 				18724783283A84E7009EF88B /* StarView.swift in Sources */,

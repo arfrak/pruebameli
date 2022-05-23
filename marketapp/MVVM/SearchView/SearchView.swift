@@ -10,10 +10,12 @@ import Introspect
 
 struct SearchView: View {
     @Binding var isPresented: Bool
+    @State var internetConnection: Bool = true
     @State var text: String = ""
     var characterLimit = 30
     
     @ObservedObject var viewModel = SearchViewModel()
+    @ObservedObject var networkMonitor = NetworkManager()
     
     var body: some View {
         NavigationView {
@@ -26,8 +28,16 @@ struct SearchView: View {
                             .imageScale(.medium)
                             .padding(.leading, 5)
                         TextField("", text: $text, onCommit: {
-                            viewModel.getProductsBySearch(parameters: text)
-                            viewModel.isLoading = true
+                            if(!text.isEmpty) {
+                                if(networkMonitor.isConnected) {
+                                    viewModel.getProductsBySearch(parameters: text)
+                                    viewModel.isLoading = true
+                                    viewModel.errorResponse = false
+                                    viewModel.notResult = false
+                                } else {
+                                    internetConnection = false
+                                }
+                            }
                         })
                         .disableAutocorrection(true)
                         .foregroundColor(Color.black)
@@ -55,10 +65,22 @@ struct SearchView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color("Background"))
                 
-                if viewModel.isLoading {
-                    LoadingView()
+                if(internetConnection) {
+                    if viewModel.isLoading {
+                        LoadingView()
+                    } else {
+                        if(viewModel.errorResponse) {
+                            ResponseView(message: NSLocalizedString("errorresponse", comment: ""), image: "error")
+                        } else {
+                            if(viewModel.notResult) {
+                                ResponseView(message: NSLocalizedString("noresults", comment: ""), image: "nosearchresult")
+                            } else {
+                                ProductListView(productList: viewModel.productsList)
+                            }
+                        }
+                    }
                 } else {
-                    ProductListView(productList: viewModel.productsList)
+                    ResponseView(message: NSLocalizedString("nointernet", comment: ""), image: "noconnection")
                 }
             }
             .navigationTitle("search")
@@ -82,6 +104,12 @@ struct SearchView: View {
             .navigationBar(backgroundColor: Color("Background"), titleColor: Color("TextBackground"))
         }
         .navigationViewStyle(.stack)
+        .onAppear {
+            networkMonitor.startMonitor()
+        }
+        .onDisappear {
+            networkMonitor.cancelMonitor()
+        }
     }
 }
 
