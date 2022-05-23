@@ -34,6 +34,7 @@ struct SearchView: View {
                                     viewModel.isLoading = true
                                     viewModel.errorResponse = false
                                     viewModel.notResult = false
+                                    internetConnection = true
                                 } else {
                                     internetConnection = false
                                 }

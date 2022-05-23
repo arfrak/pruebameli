@@ -11,14 +11,13 @@ import SwiftyJSON
 import UIKit
 
 class SearchViewModel: ObservableObject {
-    private let baseUrl = "https://api.mercadolibre.com/sites/MLA/search"
-    private var task: AnyCancellable?
+    public let baseUrl = "https://api.mercadolibre.com/sites/MLA/search"
     
     @Published var productsList: [ProductModel] = []
     @Published var isLoading: Bool = false
     @Published var errorResponse: Bool = false
     @Published var notResult: Bool = false
-    
+        
     func getProductsBySearch(parameters: String) {
         var finalURL = URLComponents(string: baseUrl)
         finalURL?.queryItems = [URLQueryItem(name: "q", value: parameters)]
